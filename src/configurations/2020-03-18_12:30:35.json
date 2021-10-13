@@ -1,0 +1,61 @@
+{
+    "name": "Configuration 1",
+    "date": "2020-03-18",
+    "time": "12:30:35",
+    "configuration": [
+        {
+            "id": 0,
+            "method": [
+                "gamma"
+            ],
+            "x0": 1,
+            "x1": 10,
+            "theta0": 0,
+            "theta1": 1,
+            "gamma0": 0,
+            "gamma1": 1,
+            "gamma1p": 0.3,
+            "gamma1n": 0,
+            "gamma2": 0,
+            "eps": 0,
+            "alpha": 1,
+            "beta": 0
+        },
+        {
+            "id": 1,
+            "method": [
+                "epsilon"
+            ],
+            "x0": 10,
+            "x1": 18,
+            "theta0": 0,
+            "theta1": 1,
+            "gamma0": 0,
+            "gamma1": 1,
+            "gamma1p": 0,
+            "gamma1n": 0,
+            "gamma2": 0,
+            "eps": 0.25,
+            "alpha": 1,
+            "beta": 0
+        },
+        {
+            "id": 2,
+            "method": [
+                "0"
+            ],
+            "x0": 18,
+            "x1": 39,
+            "theta0": 0,
+            "theta1": 1,
+            "gamma0": 0,
+            "gamma1": 1,
+            "gamma1p": 0,
+            "gamma1n": 0,
+            "gamma2": 0,
+            "eps": 0,
+            "alpha": 1,
+            "beta": 0
+        }
+    ]
+}

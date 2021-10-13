@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VISLRP</title>
+</head>
+<body>
+
+<!-- Navigation bar -->
+<div id="navbar">
+    <div id="navbar-left">ViSLRP Designer</div>
+    <div id="navbar-right">
+        <button id="new-model-button" class="navbar-button"><i class="fas fa-file"></i> CREATE NEW LRP </button>
+        <button id="save-model-button" class="navbar-button"><i class="fas fa-save"></i> SAVE LRP </button>
+        <!--
+        <button id="ablationn-button" class="navbar-button">
+            <i class="fas fa-crop-alt"></i> ABLATION </button>
+        </button>
+        -->
+    </div>
+</div>
+
+<!-- Contents -->
+<div id="container">
+    <!-- Sidebar -->
+    <div id="sidebar">
+        <button id="toggle-side-btn"><i class="fas fa-caret-left"></i></button>
+        <!-- Model Manager -->
+        <div id="manager-container">
+            <div class="sidebar-header">LRP MODEL MANAGER</div>
+            <div id="save-list-container" class="sidebar-body">
+                <font color="#525252"> No saved model available </font>
+            </div>
+        </div>
+
+        <div id="manager-compare"">
+            <div id="manager-compare-title">MODEL COMPARISON</div>
+            <div id="manager-compare-body"></div>
+        </div>
+    </div>
+    <!-- Main container -->
+    <div id="main">
+        <div id="ablate-button">NODES & RELEVANCE ABLATION</div>
+        <!-- Views -->
+        <div id="views-lrp" class="views active">
+            <!-- Image and relevance heatmap -->
+            <div id="views-lrp-images" class="views-container">
+                <div id="lrp-result-header">IMAGES & RELEVANCE HEATMAP</div>
+                <div id="lrp-result-body">
+                    <div id="lrp-result-input">
+                        <label id="lrp-result-inputbtn">
+                            <i class="far fa-image"></i>&nbsp;SELECT IMAGE
+                            <input id="lrp-result-input-file" type="file">
+                        </label>
+                        <button id="lrp-result-flipbtn"><i class="fas fa-th"></i>&nbsp;PIXELS FLIPPING</button>
+                        <button id="lrp-result-analysisbtn"><i class="fas fa-chart-bar"></i>&nbsp;NEURONS AND LAYERS ANALYSIS</button>
+                        <div id="lrp-input-image-container">
+                            <img id="lrp-input-image" alt="" src=""/>
+                        </div>
+                    </div>
+
+                    <div id="lrp-class-title">CNN PREDICTION RESULT</div>
+                    <div id="lrp-result-class-input">
+                    </div>
+
+                    <div id="lrp-result-output">
+                        <div id="lrp-output-title">LRP RELEVANCE HEATMAP TO CLASS</div>
+                        <div id="lrp-output-image-container">
+                            <div id="lrp-result-loading">
+                                <img class="loading-image" alt='' src='../../resources/loading.gif'/>
+                            </div>
+                            <img id="lrp-output-image" alt="" src=""/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="views-lrp-segments-header">
+                <div id="views-lrp-segments-header1">My new model</div>
+                <div id="views-lrp-segments-header2">LRP CONFIGURATION</div>
+            </div>
+
+            <div id="views-lrp-segments" class="views-container">
+
+                <div id="lrp-segments-full-container">
+                    <div id="lrp-segments-container">
+                        <div id="lrp-segments-button"></div>
+                        <div id="lrp-segments-lists"></div>
+                    </div>
+                    <div id="lrp-segments-vis">
+                        <div id="lrp-segments-body"></div>
+                        <div id="lrp-segments-vis-title">Segments Ruler</div>
+                    </div>
+                    <div id="lrp-segments-intermediate"></div>
+                    <div id="lrp-segments-intermediate-title">LRP Parameters </div>
+                    <div id="lrp-segments-intermediate-title2">Intermediate Relevance Heatmap</div>
+                </div>
+
+
+                <!--<div id="lrp-segments-chart"></div>-->
+
+                <!--<div id="lrp-segments-layers">layer levels</div>-->
+
+                <!-- segment settings -->
+                <div id="lrp-segments-settings">
+
+                    <!--
+                    <div id="lrp-configuration-header">LRP CONFIGURATION</div>-->
+
+                    <!--
+                    <div id="lrp-configuration-formula"
+                    ></div>-->
+
+                    <div id="lrp-configuration-template">
+                        <div id="lrp-rule-header">LRP RULES</div>
+                        <div class="lrp-configuration-body">
+                            <button class="preset-button" value="default">CUSTOM</button>
+                            <button class="preset-button" value="0"> LRP 0 </button>
+                            <button class="preset-button" value="epsilon"> LRP &#949; </button>
+                            <button class="preset-button" value="gamma"> LRP &#947; </button>
+                            <button class="preset-button" value="alpha-beta"> LRP &#945;&#946;</button>
+                            <button class="preset-button" value="alpha1-beta0"> LRP &#945;<sub>1</sub>&#946;<sub>0</sub> </button>
+                            <button class="preset-button" value="w_square"> LRP &#969;<sup>2</sup> </button>
+                            <button class="preset-button" value="flat"> LRP Flat </button>
+                            <button class="preset-button" value="z-beta"> LRP z &#946; </button>
+                        </div>
+                    </div>
+
+                    <div id="lrp-configuration-steps">
+                        <div id="lrp-step-header">CUSTOM CONFIGURATION</div>
+                    </div>
+                    <!-- lrp configuration details -->
+                    <div id="lrp-configuration-settings">
+                        <div class="lrp-configuration-body">
+                            <button class="configuration-step-buttons active" name="step1">1. Contribution Effect</button>
+
+                            <div id="settings-contribution" class="lrp-configuration-settings active"></div>
+
+                            <button class="configuration-step-buttons" name="step2">2. Activation Effect</button>
+                            <div id="settings-activation" class="lrp-configuration-settings active"></div>
+
+                            <button class="configuration-step-buttons" name="step3">3. Weight Effect</button>
+                            <div id="settings-weight" class="lrp-configuration-settings active"></div>
+
+                            <button class="configuration-step-buttons" name="step4">4. Suppression Effect</button>
+                            <div id="settings-suppression" class="lrp-configuration-settings active"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div id="lrp-flipping-container">
+                <div id="lrp-flipping-title">PIXELS FLIPPING</div>
+                <div id="lrp-flipping-body">
+                    <div id="lrp-flipping-button">
+                        <button id="lrp-flipping-add"><i class="fas fa-plus"></i></button>
+                        <div id="lrp-flipping-list"></div>
+                    </div>
+                    <div id="lrp-flipping-contents"></div>
+                </div>
+            </div>
+
+            <div id="lrp-analysis-container">
+                <div id="lrp-analysis-title">NEURONS AND LAYERS ANALYSIS</div>
+                <div id="lrp-analysis-body">
+                    <div id="ablate-wrapper1">
+                        <div id="ablate-barchart-container">
+                            <div class="ablate-title">LAYERS AND NEURONS DISTRIBTION</div>
+                            <div class="ablate-body" id="ablate-deviation-body"></div>
+                            <div class="ablate-body" id="ablate-distribution-body"></div>
+                        </div>
+                        <div id="ablate-heatmap-container">
+                            <div class="ablate-title">NEURONS MATRICES</div>
+                            <div class="ablate-body" id="ablate-heatmap-body"></div>
+                        </div>
+                    </div>
+                    <div id="ablate-wrapper2">
+                        <div id="ablate-gallery-container">
+                            <div class="ablate-title">HEATMAPS OF NEURONS</div>
+                            <div class="ablate-body" id="ablate-gallery-body"></div>
+                        </div>
+                        <div id="ablate-prediction-container">
+                            <div class="ablate-title">ABLATED PREDICTION</div>
+                            <div class="ablate-body" id="ablate-prediction-body"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="lrp-compare-container">
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<style lang='scss'>
+@import '../../node_modules/@fortawesome/fontawesome-free/css/all.min.css';
+@import '../css/style.css';
+@import '../css/checkbox.css';
+@import '../css/lrp-analysis.css';
+@import '../css/compare.css';
+@import '../css/ablate.css';
+</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/katex.min.css" integrity="sha384-D+9gmBxUQogRLqvARvNLmA9hS2x//eK1FhVb9PiU86gmcrBrJAQT8okdJ4LMp2uv" crossorigin="anonymous">
+<!-- The loading of KaTeX is deferred to speed up page rendering -->
+<script src="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/katex.min.js" integrity="sha384-483A6DwYfKeDa0Q52fJmxFXkcPCFfnXMoXblOkJ4JcA8zATN6Tm78UNL72AKk+0O" crossorigin="anonymous"></script>
+<!-- To automatically render math in text elements, include the auto-render extension: -->
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/contrib/auto-render.min.js" integrity="sha384-yACMu8JWxKzSp/C1YV86pzGiQ/l1YUfE8oPuahJQxzehAjEt2GiQuy/BIvl9KyeF" crossorigin="anonymous"
+onload="renderMathInElement(document.body);"></script>
+<script>
+// install babel hooks in the renderer process
+require('babel-register');
+require("babel-polyfill");
+require('../js/index');
+</script>
+</body>
+</html>

@@ -1,0 +1,1323 @@
+@font-face {
+    font-family: 'Lato';
+    src: url('../fonts/Lato/Lato-Regular.ttf') format('truetype');
+}
+
+/* Base 16 Ocean Color Palette
+#eff1f5,#c0c5ce,#2A303C,#222831,#1B1F27,#b48ead,#8fa1b3,#96b5b4
+#a3be8c,#ebcb8b,#bf616a
+*/
+
+/* Linx Mono Color Palette
+#deecfb	(222,236,251)
+#bedaf7	(190,218,247)
+#7ab3ef	(122,179,239)
+#368ce7	(54,140,231)
+#1666ba	(22,102,186)
+*/
+
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    font-family: 'Lato';
+    padding: 0;
+    overflow: hidden;
+}
+
+/* this do the square numbers (e.g., w^2) */
+sup {
+    vertical-align: super;
+    font-size: smaller;
+}
+
+/* Navigation bar */
+#navbar {
+    position: absolute;
+    width: 100%;
+    height: 40px;
+    font-size: 20px;
+    line-height: 40px;
+    color: #fff;
+    top: 0;
+    left: 0;
+    background-color: #1666ba;
+    box-sizing: border-box;
+    padding: 0px 10px 0px 10px;
+}
+
+#navbar-left {
+    width: auto;
+    height: 100%;
+    padding-left: 5px;
+    box-sizing: border-box;
+    float: left;
+}
+
+#navbar-right {
+    width: auto;
+    height: 100%;
+    padding-right: 5px;
+    box-sizing: border-box;
+    float: right;
+}
+
+.navbar-button {
+    width: auto;
+    height: 35px;
+    color: #fff;
+    background-color: #1666ba;
+    border-radius: 2px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.navbar-button:hover {
+    color: #bedaf7;
+}
+
+/* Window container */
+#container {
+    width: 100%;
+    height: 100%;
+    padding-top: 40px; /* Set according to navbar */
+    box-sizing: border-box;
+}
+
+/* Sidebar panel */
+
+#toggle-side-btn {
+    position: absolute;
+    width: 25px;
+    height: 30px;
+    top: 0;
+    right: -24px;
+    z-index: 9999;
+    cursor: pointer;
+    box-sizing: border-box;
+    border: none;
+    outline: none;
+    font-size: 20px;
+    color: #368ce7;
+    background-color: #bedaf7;
+}
+
+#toggle-side-btn:hover {
+    color: #1666ba;
+}
+
+#sidebar {
+    width: 250px;
+    height: 100%;
+    float: left;
+    position: relative;
+    box-sizing: border-box;
+    -webkit-transition: .2s;
+    transition: width .2s;
+}
+
+.sidebar-header {
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    font-size: 16px;
+    box-sizing: border-box;
+    color: #000;
+    background-color: #bedaf7;
+    /*border-bottom: 1px solid #1666ba;*/
+    text-align: center;
+}
+
+.sidebar-body {
+    width: 100%;
+    height: calc(100% - 30px);
+    box-sizing: border-box;
+    padding: 5px;
+    text-align: center;
+    color: #000;
+    background-color: #bedaf7;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+/* Model manager */
+#manager-container {
+    width: 100%;
+    height: calc(100% - 30px);
+    overflow: hidden;
+}
+
+/* Main panel */
+#main {
+    width: calc(100% - 250px);
+    height: 100%;
+    float: left;
+    position: relative;
+    box-sizing: border-box;
+    /*border-left: 2px solid #1666ba;*/
+    -webkit-transition: .2s;
+    transition: width .2s;
+}
+
+#ablate-button {
+    position: absolute;
+    top: 50px;
+    right: 5px;
+    width: 100px;
+    height: auto;
+    border: none;
+    outline: none;
+    font-family: 'Lato';
+    font-size: 14px;
+    float: left;
+    background-color: #1666ba;
+    box-sizing: border-box;
+    cursor: pointer;
+    padding: 5px;
+    text-align: center;
+    color: #fff;
+}
+
+/* Views */
+.views {
+    width: 100%;
+    height: 100%; /* Change base on tab size*/
+    display: none;
+}
+
+.views.active {
+    display: block;
+}
+
+.views-container {
+    overflow: hidden;
+    float: left;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+
+#lrp-result-header {
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    box-sizing: border-box;
+    background-color: #368ce7;
+    color: #fff;
+    text-align: center;
+}
+
+#lrp-result-body {
+    width: 100%;
+    height: calc(100% - 30px);
+    box-sizing: border-box;
+    text-align: center;
+    padding: 5px;
+    position: relative;
+}
+
+#lrp-class-title {
+    position: relative;
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    z-index: 1000;
+    font-size: 14px;
+    background: #368ce7;
+    color: #fff;
+}
+
+#lrp-output-title {
+    width: 100%;
+    height: 40px;
+    text-align: center;
+    font-size: 14px;
+    z-index: 1000;
+    background: #368ce7;
+    color: #fff;
+}
+
+
+/* LRP Segments view */
+#views-lrp-segments-header {
+    width: calc(100% - 300px);
+    height: 30px;
+    line-height: 30px;
+    box-sizing: border-box;
+    text-align: center;
+    color: #fff;
+    float: left;
+}
+
+#views-lrp-segments-header1 {
+    width: calc(100% - 250px);
+    height: 30px;
+    line-height: 30px;
+    box-sizing: border-box;
+    text-align: center;
+    float: left;
+    background-color: #368ce7;
+    color: #fff;
+    border-left: 1px solid #f0f0f0;
+    border-right: 1px solid #f0f0f0;
+}
+
+#views-lrp-segments-header2 {
+    width: 250px;
+    height: 30px;
+    line-height: 30px;
+    box-sizing: border-box;
+    text-align: center;
+    float: left;
+    background-color: #368ce7;
+    color: #fff;
+}
+
+#views-lrp-segments {
+    width: calc(100% - 300px);
+    height: calc(100% - 30px);
+    position: relative;
+    background-color: #f0f0f0;
+    float: left;
+}
+
+/*
+#lrp-segments-lists {
+    width: 200px;
+    height: calc(100% - 50px);
+    float: left;
+    border-right: 1px solid #1666ba;
+    box-sizing: border-box;
+    padding: 5px;
+}*/
+
+#lrp-segments-full-container {
+    position: relative;
+    width: calc(100% - 250px);
+    height: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+    float: left;
+}
+
+#lrp-segments-container {
+    width: 100%;
+    height: 30px;
+    box-sizing: border-box;
+    /*border-bottom: 1px solid #1666ba;*/
+    overflow: hidden;
+    float: left;
+}
+
+
+#lrp-segments-vis {
+    position: relative;
+    width: 150px;
+    height: calc(100% - 30px);
+    float: left;
+    box-sizing: border-box;
+}
+
+#lrp-segments-vis-title {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    width: 100%;
+    height: auto;
+    box-sizing: border-box;
+    font-size: 14px;
+    text-align: center;
+}
+
+#lrp-segments-chart {
+    width: 200px;
+    height: calc(100% - 30px);
+    float: left;
+    box-sizing: border-box;
+    /*border-left: 1px dashed #1666ba;*/
+    /*border-right: 1px dashed #1666ba;*/
+    padding: 10px;
+    background-color: #fff;
+}
+
+#lrp-segments-intermediate {
+    position: relative;
+    width: calc(100% - 150px);
+    height: calc(100% - 22px);
+    float: left;
+    box-sizing: border-box;
+    padding: 10px;
+}
+
+#lrp-segments-intermediate-title {
+    position: absolute;
+    top: 35px;
+    left: 350px;
+    width: auto;
+    height: auto;
+    text-align: center;
+    font-size: 14px;
+}
+
+#lrp-segments-intermediate-title2 {
+    position: absolute;
+    top: 35px;
+    right: 5px;
+    width: auto;
+    height: auto;
+    text-align: center;
+    font-size: 14px;
+}
+
+/* flipping contents */
+#lrp-flipping-container {
+    position: absolute;
+    left: 300px;
+    width: 0;
+    height: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+    -webkit-transition: .4s;
+    transition: width .4s;
+    z-index: 10;
+    background-color: #f0f0f0;
+}
+
+#lrp-flipping-title {
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    box-sizing: border-box;
+    background-color: #368ce7;
+    color: #fff;
+    border-left: 1px solid #f0f0f0;
+    text-align: center;
+}
+
+#lrp-flipping-body {
+    position: relative;
+    width: 100%;
+    height: calc(100% - 30px);
+    box-sizing: border-box;
+}
+
+#lrp-flipping-button {
+    box-sizing: border-box;
+    width: 100%;
+    height: 30px;
+    background-color: #fff;
+}
+
+.flipping-heatmap-button {
+    position: absolute;
+    width: 150px;
+    height: 30px;
+    top: 2px;
+    left: 5px;
+    font-size: 14px;
+    color: #252525;
+    background-color: #fff;
+    outline: none; border: none;
+    cursor: pointer;
+}
+
+.flipping-brush-button {
+    position: absolute;
+    width: 135px;
+    height: 30px;
+    top: 2px;
+    left: 160px;
+    font-size: 14px;
+    color: #252525;
+    background-color: #fff;
+    outline: none; border: none;
+    cursor: pointer;
+}
+
+.flipping-heatmap-button.active {
+    color: #fff;
+    background-color: #1666ba;
+}
+
+.flipping-brush-button.active {
+    color: #fff;
+    background-color: #1666ba;
+}
+
+#lrp-flipping-add {
+    width: 30px;
+    height: 30px;
+    font-size: 20px;
+    color: #fff;
+    background-color: #1666ba;
+    outline: none; border: none;
+    cursor: pointer;
+    float: left;
+}
+
+#lrp-flipping-list {
+    width: calc(100% - 30px);
+    height: 30px;
+    font-size: 14px;
+    box-sizing: border-box;
+    float: left;
+    overflow-y: hidden;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+#lrp-flipping-contents {
+    width: 100%;
+    height: calc(100% - 30px);
+    box-sizing: border-box;
+    border-top: 1px solid #1666ba;
+    overflow-y: auto;
+    overflow-x: hidden;
+    white-space: nowrap;
+}
+
+#lrp-ablate-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+#lrp-ablate-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: auto;
+    height: auto;
+    color: #fff;
+    background-color: #1666ba;
+    outline: none; border: none;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+#lrp-ablate-close:hover {
+    background-color: #368ce7;
+}
+
+#lrp-ablate-mask {
+    position: absolute;
+    top: 5px;
+    left: 300px;
+    width: 300px;
+    height: 300px;
+    box-sizing: border-box;
+    background: #fff;
+    float: left;
+}
+
+#lrp-ablate-prediction {
+    position: absolute;
+    top: 5px;
+    left: 600px;
+    width: 300px;
+    height: 300px;
+    box-sizing: border-box;
+    background: #fff;
+    float: left;
+}
+
+#lrp-ablate-prediction2 {
+    position: absolute;
+    top: 5px;
+    left: 0px;
+    width: 300px;
+    height: 300px;
+    box-sizing: border-box;
+    background: #fff;
+    float: left;
+}
+
+#lrp-ablate-heatmap {
+    position: absolute;
+    top: 5px;
+    left: 900px;
+    width: 300px;
+    height: 300px;
+    box-sizing: border-box;
+    background: #fff;
+    float: left;
+}
+
+#lrp-ablate-heatmap-button {
+    position: absolute;
+    top: 5px;
+    left: 1210px;
+    width: 100px;
+    height: 50px;
+    font-size: 14px;
+    color: #fff;
+    background-color: #1666ba;
+    outline: none; border: none;
+    cursor: pointer;
+}
+
+#lrp-ablate-brush-button {
+    position: absolute;
+    top: 60px;
+    left: 1210px;
+    width: 100px;
+    height: 50px;
+    font-size: 14px;
+    color: #fff;
+    background-color: #1666ba;
+    outline: none; border: none;
+    cursor: pointer;
+}
+
+#lrp-ablate-treshold {
+    position: absolute;
+    top: 330px;
+    left: 900px;
+    width: 300px;
+    height: 10px;
+    text-align: center;
+}
+
+#lrp-ablate-text {
+    position: absolute;
+    top: 310px;
+    left: 900px;
+    width: auto;
+    height: 20px;
+    font-size: 14px;
+}
+
+#lrp-ablate-confirm {
+    position: absolute;
+    top: 350px;
+    left: 900px;
+    width: 300px;
+    height: auto;
+    text-align: center;
+}
+
+#lrp-ablate-classify {
+    width: 150px;
+    height: 100%;
+    font-size: 14px;
+    color: #fff;
+    background-color: #1666ba;
+    outline: none; border: none;
+    cursor: pointer;
+}
+
+#lrp-ablate-confirm {
+    position: absolute;
+}
+
+#lrp-segments-settings {
+    width: 250px;
+    height: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+    background-color: #fff;
+    float: left;
+    /*border-right: 1px solid #1666ba;*/
+}
+
+#lrp-configuration-header {
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    font-size: 14px;
+    box-sizing: border-box;
+    text-align: center;
+    background-color: #bedaf7;
+    color: #000;
+}
+
+/* LRP segments configuration */
+#lrp-segments-configuration {
+    width: 30%;
+    height: calc(100% - 30px);
+    float: left;
+    box-sizing: border-box;
+    border-left: 1px solid #1666ba;
+}
+
+#lrp-segments-lists {
+    width: calc(100% - 30px);
+    box-sizing: border-box;
+    overflow-x: scroll;
+    white-space: nowrap;
+    float: left;
+}
+
+#lrp-segments-button {
+    width: 30px;
+    height: 30px;
+    float: left;
+}
+
+#lrp-segments-body {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+#lrp-segments-formula {
+    width: 100%;
+    height: 70px;
+    line-height: 70px;
+    box-sizing: border-box;
+    text-align: center;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+/* LRP Intermediate view */
+#views-lrp-intermediate {
+    width: 100%;
+    height: 70%;
+    display: none;
+}
+
+/* LRP Configure view */
+#views-lrp-configure {
+    width: 0px;
+    height: 70%;
+    border-left: 2px solid #1666ba;
+    display: none;
+}
+
+#lrp-step-header {
+    position: relative;
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    font-size: 14px;
+    text-align: center;
+    box-sizing: border-box;
+    background-color: #fff;
+}
+
+#lrp-rule-header {
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    font-size: 14px;
+    text-align: center;
+    box-sizing: border-box;
+    background-color: #fff;
+}
+
+.lrp-configuration-body {
+    width: 100%;
+    height: calc(100% - 30px);
+    box-sizing: border-box;
+    padding: 2px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background-color: #fff;
+}
+
+#lrp-configuration-formula {
+    width: 100%;
+    height: 60px;
+    font-size: 14px;
+    line-height: 60px;
+    background-color: #1666ba;
+    box-sizing: border-box;
+    color: #000;
+    text-align: center;
+    overflow: hidden;
+}
+
+/* LRP configuration preset templates */
+#lrp-configuration-template {
+    width: 100%;
+    height: 180px;
+    box-sizing: border-box;
+    float: left;
+}
+
+.preset-button {
+    width: 45%;
+    height: 20px;
+    border: none;
+    outline: none;
+    font-family: 'Lato';
+    font-size: 14px;
+    float: left;
+    background-color: #deecfb;
+    margin: 3px;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+.preset-button:hover {
+    background-color: #bedaf7;
+}
+
+.preset-button.active {
+    background-color: #1666ba;
+    color: #fff;
+}
+
+/* LRP configuration steps tabs */
+#lrp-configuration-steps {
+    width: 100%;
+    height: 30px;
+    border-right: 1px solid #bedaf7;
+    box-sizing: border-box;
+    float: left;
+}
+
+.configuration-step-buttons {
+    width: 100%;
+    height: 20px;
+    line-height: 20px;
+    border: none;
+    outline: none;
+    font-family: 'Lato';
+    font-size: 14px;
+    background-color: #deecfb;
+    box-sizing: border-box;
+    cursor: pointer;
+    text-align: left;
+    opacity: 0.5;
+}
+
+.configuration-step-buttons.active {
+    color: #000;
+    opacity: 1;
+}
+
+.configuration-step-buttons:hover {
+    opacity: 1;
+}
+
+/* LRP configuration settings */
+#lrp-configuration-settings {
+    width: 100%;
+    height: calc(100% - 200px);
+    border-right: 1px solid #bedaf7;
+    box-sizing: border-box;
+    float: left;
+    border-bottom: 1px solid #1666ba;
+}
+
+#lrp-segments-layers {
+    width: 500px;
+    height: 100%;
+    float: left;
+}
+
+.lrp-configuration-settings {
+    width: 100%;
+    height: auto;
+    box-sizing: border-box;
+    display: none;
+    padding: 10px;
+}
+
+.lrp-configuration-settings.active {
+    display: block;
+}
+
+.settings-row {
+    position: relative;
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    font-size: 12px;
+    box-sizing: border-box;
+    display: table;
+    margin-bottom: 5px;
+    border: 1px solid #deecfb;
+    border-radius: 2px;
+}
+
+/* Custom Slider */
+.custom-slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 4px;
+    background: #bedaf7;
+    outline: none;
+    opacity: 1;
+}
+
+.custom-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: #1666ba;
+    cursor: pointer;
+}
+
+.custom-slider::-moz-range-thumb {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: #1666ba;
+    cursor: pointer;
+}
+
+.custom-slider::-webkit-slider-thumb:hover {
+    background: #368ce7;
+}
+
+
+/* LRP result images */
+#views-lrp-images {
+    width: 300px;
+    height: 100%;
+    float: left;
+    box-sizing: border-box;
+    /*background-color: #f0f0f0;*/
+    /*border-bottom: 2px solid #1666ba;*/
+    /*display: flex;*/
+    /*flex-wrap: wrap;*/
+    /*justify-content: center;*/
+}
+
+/* LRP classlist input */
+#lrp-result-class-input {
+    position: relative;
+    width: 100%;
+    height: calc(100% - 660px);
+    box-sizing: border-box;
+    display: inline-block;
+    vertical-align: top;
+}
+
+/* LRP result input */
+#lrp-result-input {
+    width: 100%;
+    height: 350px;
+    box-sizing: border-box;
+    text-align: center;
+    display: inline-block;
+    vertical-align: top;
+}
+
+#lrp-result-inputbtn {
+    border: none;
+    outline: none;
+    font-size: 14px;
+    height: 25px;
+    width: 100%;
+    line-height: 25px;
+    background-color: #1666ba;
+    color: #fff;
+    cursor: pointer;
+    text-align: center;
+    padding: 5px;
+}
+
+#lrp-result-flipbtn {
+    border: none;
+    outline: none;
+    font-size: 14px;
+    height: 25px;
+    width: 100%;
+    color: #1666ba;
+    border: 1px solid #1666ba;
+    cursor: pointer;
+    text-align: center;
+    padding: 5px;
+    margin-top: 4px;
+}
+
+#lrp-result-analysisbtn {
+    border: none;
+    outline: none;
+    font-size: 14px;
+    height: 25px;
+    width: 100%;
+    color: #1666ba;
+    border: 1px solid #1666ba;
+    cursor: pointer;
+    text-align: center;
+    padding: 5px;
+    margin-top: 2px;
+}
+
+#lrp-result-analysisbtn:hover, #lrp-result-flipbtn:hover {
+    background-color: #1666ba;
+    color: #fff;
+}
+
+#lrp-result-input-file {
+    display: none;
+}
+
+#lrp-input-image-container {
+    width: 100%;
+    height: calc(100% - 80px);
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+#lrp-input-image {
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 5px;
+}
+
+/* LRP intermediate buttons */
+#lrp-result-config-btn {
+    position: relative;
+    width: 40px;
+    height: 100%;
+    float: left;
+    border-right: 2px solid #fff;
+    background-color: #1666ba;
+    color: #fff;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+#lrp-result-config-btn:hover {
+    color: #fff;
+    background-color: #368ce7;
+}
+
+#lrp-result-config-text {
+    position: absolute;
+    line-height: auto;
+    width: 40px;
+    height: auto;
+    top: 50%;
+    right: 0px;
+    transform: rotate(-270deg);
+    transform-origin: right top 0;
+    font-size: 16px;
+}
+
+#lrp-result-run-btn {
+    position: relative;
+    width: 40px;
+    height: 100%;
+    float: left;
+    border-right: 1px solid #368ce7;
+    background-color: #1666ba;
+    color: #fff;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+#lrp-result-run-btn:hover {
+    color: #fff;
+    background-color: #368ce7;
+}
+
+#lrp-result-run-text {
+    position: absolute;
+    line-height: auto;
+    width: 40px;
+    height: auto;
+    top: 55%;
+    right: -5px;
+    transform: rotate(-270deg);
+    transform-origin: right top 0;
+    font-size: 40px;
+    text-align: center;
+}
+
+
+/* LRP intermediate images */
+#lrp-result-intermediate {
+    position: relative;
+    width: calc(50% - 120px);
+    height: 100%;
+    float: left;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+/* LRP layer detail buttons */
+#lrp-result-layer-btn {
+    position: relative;
+    width: 40px;
+    height: 100%;
+    float: left;
+    border-left: 1px solid #368ce7;
+    background-color: #1666ba;
+    color: #fff;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+#lrp-result-layer-btn:hover {
+    color: #fff;
+    background-color: #368ce7;
+}
+
+#lrp-result-layer-text {
+    position: absolute;
+    width: 40px;
+    height: auto;
+    top: 50%;
+    right: 0px;
+    transform: rotate(-270deg);
+    transform-origin: right top 0;
+    font-size: 16px;
+    text-align: center;
+}
+
+/* LRP result output */
+#lrp-result-output {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    box-sizing: border-box;
+    text-align: center;
+    display: inline-block;
+    vertical-align: top;
+}
+
+#lrp-result-loading {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    display: none;
+    border: 1px solid #1666ba;
+    background-color: #fff;
+}
+
+.loading-image {
+    width: 35px;
+    height: 35px;
+    margin: auto;
+    margin-top: 45%;
+}
+
+#lrp-output-image-container {
+    position: relative;
+    width: 100%;
+    height: calc(100% - 40px);
+    box-sizing: border-box;
+}
+
+#lrp-output-image {
+    width: 290px;
+    height: 270px;
+    box-sizing: border-box;
+}
+
+/* LRP intermediate */
+#lrp-intermediate-sidebar {
+    width: 400px;
+    height: 100%;
+    box-sizing: border-box;
+    position: relative;
+    border-right: 1px solid #1666ba;
+    float: left;
+}
+
+#lrp-intermediate-container {
+    width: calc(100% - 400px);
+    height: 100%;
+    box-sizing: border-box;
+    position: relative;
+    float: left;
+}
+
+#lrp-intermediate-entropy {
+    width: 100%;
+    height: 30%;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.axis path,
+.axis line {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
+}
+
+.line {
+    fill: none;
+    stroke: steelblue;
+    stroke-width: 2px;
+}
+
+#lrp-intermediate-histogram {
+    width: 100%;
+    height: calc(50% - 30px);
+    box-sizing: border-box;
+    position: relative;
+    border-top: 1px solid #1666ba;
+}
+
+#lrp-intermediate-histogram-controls {
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    box-sizing: border-box;
+    border-top: 1px solid #1666ba;
+    padding: 5px;
+}
+
+#lrp-intermediate-legend {
+    width: 100%;
+    height: 20%;
+    box-sizing: border-box;
+    position: relative;
+    border-top: 1px solid #1666ba;
+    text-align: center;
+    color: #d9d9d9;
+}
+
+
+#lrp-intermediate-score {
+    width: calc(100% - 300px);
+    height: 100%;
+    border-top: 1px solid #1666ba;
+    background-color: #fff;
+    overflow-x: hidden;
+    overflow-y: auto;
+    text-align: center;
+    float: left;
+    box-sizing: border-box;
+}
+
+#lrp-intermediate-heatmap {
+    width: 300px;
+    height: 100%;
+    border-top: 1px solid #1666ba;
+    border-left: 1px solid #1666ba;
+    background-color: #fff;
+    overflow-y: auto;
+    overflow-x: hidden;
+    box-sizing: border-box;
+}
+
+#lrp-heatmap-activation {
+    width: 300px;
+    height: 300px;
+    box-sizing: border-box;
+    background-size: cover;
+}
+#lrp-heatmap-relevancepos {
+    width: 300px;
+    height: 300px;
+    border-top: 1px solid #1666ba;
+    box-sizing: border-box;
+    background-size: cover;
+}
+#lrp-heatmap-relevanceneg {
+    width: 300px;
+    height: 300px;
+    border-top: 1px solid #1666ba;
+    box-sizing: border-box;
+    background-size: cover;
+}
+
+/* Flipping container */
+#lrp-flip-container {
+    width: 0px;
+    height: calc(100% - 30px);
+    box-sizing: border-box;
+    border-left: 1px solid #1666ba;
+    border-top: 1px solid #1666ba;
+    background-color: #fff;
+    overflow: hidden;
+    float: left;
+}
+
+#lrp-flip-nodes {
+    width: 100%;
+    height: calc(50% - 30px);
+    box-sizing: border-box;
+    border-bottom: 1px solid #1666ba;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background-color: #252525;
+}
+
+#lrp-flip-button {
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    box-sizing: border-box;
+    border: none;
+    outline: none;
+    font-family: 'Lato';
+    font-size: 16px;
+    background-color: #1666ba;
+    color: #fff;
+    cursor: pointer;
+    margin-top: 2px;
+}
+
+#lrp-pixels-button {
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    box-sizing: border-box;
+    border: none;
+    outline: none;
+    font-family: 'Lato';
+    font-size: 16px;
+    background-color: #1666ba;
+    color: #fff;
+    cursor: pointer;
+    margin-top: 2px;
+}
+
+#lrp-flip-prediction {
+    width: 100%;
+    height: 50%;
+    box-sizing: border-box;
+}
+
+/*
+#lrp-intermediate-heatmap-activation {
+    width: 30%;
+    height: 100%;
+    box-sizing: border-box;
+    float: left;
+    border-left: 1px solid #1666ba;
+}
+
+#lrp-intermediate-heatmap-relevance {
+    width: 30%;
+    height: 100%;
+    box-sizing: border-box;
+    float: right;
+    border-left: 1px solid #1666ba;
+    border-right: 1px solid #1666ba;
+}*/
+
+.layer-nodes.toggled {
+    border: 5px solid #000;
+}
+
+.class-axis path, .class-axis line {
+    fill: none;
+    display: none;
+}
+
+.parameter-axis line, .parameter-axis path {
+    fill: none;
+    display: none;
+}
+
+.threshold-brush {
+    fill: none;
+    stroke: #000;
+    opacity: 0.01;
+}

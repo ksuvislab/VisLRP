@@ -1,0 +1,47 @@
+{
+    "name": "visualdesignerlrps",
+    "productName": "VisualDesignerLRPs",
+    "version": "1.0.0",
+    "description": "LRP Visual Designer",
+    "main": "app.js",
+    "scripts": {
+        "start": "electron-forge start",
+        "package": "electron-forge package",
+        "make": "electron-forge make",
+        "publish": "electron-forge publish",
+        "lint": "echo \"No linting configured\""
+    },
+    "keywords": [],
+    "author": "Suphanut Jamonnak",
+    "license": "MIT",
+    "config": {
+        "forge": "./forge.config.js"
+    },
+    "dependencies": {
+        "@fortawesome/fontawesome-free": "^5.9.0",
+        "algebra.js": "^0.2.6",
+        "argparse": "^1.0.10",
+        "babel-polyfill": "^6.26.0",
+        "babel-preset-env": "^1.7.0",
+        "babel-register": "^6.26.0",
+        "base64-img": "^1.0.4",
+        "boolean-parser": "^0.0.2",
+        "d3": "^5.9.7",
+        "electron-prompt": "^1.5.1",
+        "electron-squirrel-startup": "^1.0.0",
+        "jquery": "^3.4.1",
+        "katex": "^0.11.1",
+        "python-shell": "^1.0.8",
+        "tree-kill": "^1.2.2",
+        "unpickle": "^0.2.0",
+        "xmlserializer": "^0.6.1"
+    },
+    "devDependencies": {
+        "@electron-forge/cli": "6.0.0-beta.43",
+        "@electron-forge/maker-deb": "6.0.0-beta.43",
+        "@electron-forge/maker-rpm": "6.0.0-beta.43",
+        "@electron-forge/maker-squirrel": "6.0.0-beta.43",
+        "@electron-forge/maker-zip": "6.0.0-beta.43",
+        "electron": "5.0.9"
+    }
+}
